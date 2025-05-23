@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>NYC Collision Analysis Report</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f8fafc;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+    header {
+      background: #1e293b;
+      color: #fff;
+      padding: 2.5rem 1rem 1.5rem 1rem;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0 0 0.5em 0;
+      font-size: 2.3em;
+      letter-spacing: 1px;
+    }
+    nav {
+      background: #f1f5f9;
+      padding: 1em 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    nav ul {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1.5em;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      color: #334155;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: #2563eb;
+    }
+    main {
+      max-width: 800px;
+      margin: 2.5em auto;
+      background: #fff;
+      padding: 2em 1.5em 3em 1.5em;
+      border-radius: 12px;
+      box-shadow: 0 2px 16px rgba(30,41,59,0.07);
+    }
+    h2 {
+      color: #1e293b;
+      margin-top: 2em;
+      margin-bottom: 0.5em;
+      font-size: 1.5em;
+      border-bottom: 2px solid #e0e7ef;
+      padding-bottom: 0.2em;
+    }
+    h3 {
+      color: #2563eb;
+      margin-top: 1.7em;
+      margin-bottom: 0.5em;
+      font-size: 1.13em;
+    }
+    ul, ol {
+      margin: 1em 0 1em 1.5em;
+    }
+    figure {
+      text-align: center;
+      margin: 2.5em 0;
+    }
+    .report-image {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    figcaption {
+      font-size: 0.97em;
+      color: #555;
+      margin-top: 0.5em;
+    }
+    .callout {
+      background: #f1f5fd;
+      border-left: 5px solid #2563eb;
+      padding: 1em 1.2em;
+      margin: 2em 0;
+      border-radius: 6px;
+      font-size: 1.08em;
+    }
+    .recommendations {
+      background: #fffbe6;
+      border-left: 5px solid #ffd700;
+      padding: 1em 1.2em;
+      margin: 2em 0;
+      border-radius: 6px;
+    }
+    footer {
+      text-align: center;
+      padding: 2em 1em 1em 1em;
+      background: #f1f5f9;
+      color: #555;
+      font-size: 0.98em;
+      margin-top: 3em;
+    }
+    @media (max-width: 600px) {
+      main {
+        padding: 1em 0.5em 2em 0.5em;
+      }
+      nav ul {
+        gap: 0.7em;
+        font-size: 0.98em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>NYC Collision Analysis Report</h1>
+    <div><em>Motor Vehicle Collisions (Jan 2021 – Apr 2023)</em></div>
+    <div style="margin-top: 0.7em; font-size: 1.08em; color: #cbd5e1;">
+      <span>By Aradhya | Data: NYC Open Data Portal | Tools: Python, Excel</span>
+    </div>
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#summary">Executive Summary</a></li>
+      <li><a href="#patterns">Temporal Patterns</a></li>
+      <li><a href="#factors">Contributing Factors</a></li>
+      <li><a href="#insights">Key Insights</a></li>
+      <li><a href="#recommendations">Recommendations</a></li>
+      <li><a href="#repo">GitHub</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="background">
+      <h2>Project Background</h2>
+      <p>
+        <b>Why this report?</b><br>
+        Motor vehicle collisions are a leading cause of injury and death in New York City. This analysis leverages NYPD open data to reveal patterns in accident timing, locations, and root causes, with the goal of informing public safety and urban planning efforts.
+      </p>
+    </section>
+
+    <section id="summary">
+      <h2>Executive Summary</h2>
+      <div class="callout">
+        <ul>
+          <li><b>230,000+</b> collisions analyzed (Jan 2021 – Apr 2023)</li>
+          <li><b>116,227</b> injuries and <b>635</b> deaths</li>
+          <li><b>Brooklyn</b> is the most dangerous borough (29% of casualties)</li>
+          <li><b>Friday</b> is the riskiest day (18% of deaths)</li>
+          <li><b>July</b> has the highest fatality rate (summer spike)</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="patterns">
+      <h2>Temporal Patterns: When Do Most Collisions Happen?</h2>
+      <p>
+        The risk of being killed or injured in a collision is not evenly distributed across the week or throughout the day. The following tables and charts illustrate these patterns.
+      </p>
+      <figure>
+        <img src="assets/week.png" alt="Weekly casualties table" class="report-image">
+        <figcaption>Table 1: Total persons killed and injured by day of the week in NYC collisions (2021–2023).</figcaption>
+      </figure>
+      <figure>
+        <img src="assets/time.png" alt="Hourly casualties line chart" class="report-image">
+        <figcaption>Figure 1: Percentage of persons killed and injured by hour of day. Injuries peak during afternoon rush hour, while fatalities are more common late at night and early morning.</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Key takeaway:</b> Risk is highest on Fridays and during late-night/early morning hours, especially for fatalities.
+      </div>
+    </section>
+
+    <section id="factors">
+      <h2>Contributing Factors: What Causes the Most Fatalities?</h2>
+      <p>
+        The chart below shows the top contributing factors to fatal collisions. Unsafe speed and driver inattention are the leading causes, with alcohol involvement and failure to yield also significant.
+      </p>
+      <figure>
+        <img src="assets/factor.png" alt="Contributing factors bar chart" class="report-image">
+        <figcaption>Figure 2: Top contributing factors to fatalities in NYC collisions (2021–2023).</figcaption>
+      </figure>
+      <div class="callout">
+        <b>Actionable insight:</b> Targeted enforcement and education on speeding, distraction, and impaired driving could save lives.
+      </div>
+    </section>
+
+    <section id="insights">
+      <h2>Key Insights</h2>
+      <ul>
+        <li><b>Friday</b> has the highest percentage of deaths (18%) and injuries (15%) among all days.</li>
+        <li><b>Afternoon rush hour (4–6 PM)</b> sees the most injuries, while late night/early morning (12–5 AM) is deadliest.</li>
+        <li><b>Unsafe speed</b> is the leading cause of fatal crashes, followed by driver inattention and unknown factors.</li>
+        <li><b>Alcohol involvement</b> and failure to yield are also significant contributors.</li>
+      </ul>
+    </section>
+
+    <section id="recommendations">
+      <h2>Recommendations</h2>
+      <div class="recommendations">
+        <ul>
+          <li>Increase enforcement and awareness on Fridays and during late-night hours.</li>
+          <li>Target speed enforcement and distracted driving campaigns in high-risk areas.</li>
+          <li>Install more traffic calming measures and improve pedestrian safety infrastructure.</li>
+          <li>Promote public education on the dangers of speeding and impaired driving.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="repo">
+      <h2>Project Repository</h2>
+      <p>
+        <a href="https://github.com/Aradhya2002/aradhya.github.io" target="_blank" style="color:#2563eb;font-size:1.1em;font-weight:500;">
+          <span style="font-size:1.3em;">&#128187;</span> View this project on GitHub
+        </a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 NYC Collision Analysis | Data Source: NYC Open Data Portal
+  </footer>
+</body>
+</html>
