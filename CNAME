@@ -1,1 +1,7 @@
-aradhyaramkoli.com
+Type: A
+Name: @
+Value: 185.199.108.153
+
+Type: CNAME
+Name: www
+Value: aradhyaramkoli.com
